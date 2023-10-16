@@ -32,7 +32,6 @@ ChartJS.register(
 import { Bar } from "react-chartjs-2"; // Certifique-se de que você tenha instalado o pacote react-chartjs-2
 
 interface LaunchesPerYearChartProps {
-  title: string;
   data: {
     labels: string[]; // Anos
     datasets: {
@@ -44,7 +43,6 @@ interface LaunchesPerYearChartProps {
 }
 
 const LaunchesPerYearChart: React.FC<LaunchesPerYearChartProps> = ({
-  title,
   data,
 }) => {
   const chartOptions = {

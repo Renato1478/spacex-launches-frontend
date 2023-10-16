@@ -32,13 +32,9 @@ import { Pie } from "react-chartjs-2";
 
 type LaunchesPerRocketChart = {
   data: { labels: string[]; data: number[] };
-  title: string;
 };
 
-const LaunchesPerRocketChart: React.FC<LaunchesPerRocketChart> = ({
-  data,
-  title,
-}) => {
+const LaunchesPerRocketChart: React.FC<LaunchesPerRocketChart> = ({ data }) => {
   const chartData = {
     labels: data.labels,
     datasets: [
