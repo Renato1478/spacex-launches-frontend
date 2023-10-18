@@ -33,10 +33,10 @@ git clone https://github.com/Renato1478/coodesh-spacex-frontend
 cd pasta/de/destino/do/projeto
 ```
 
-3. Inicie os containers
+3. Inicie o script de desenvolvimento
 
 ```bash
-docker-compose up
+npm run dev
 ```
 
 4. Ao finalizar o processo de inicialização do container, a aplicação estará disponível em http://localhost:3000.
