@@ -41,7 +41,7 @@ export default function LaunchesPerRocket() {
 
   return (
     <div className="bg-white bg-opacity-5 text-white w-full flex flex-col py-6 px-4 rounded-md">
-      <SectionTitle text="LANÇAMENTOS POR FOGUETE" icon={<CalendarIcon />} />
+      <SectionTitle text="LANÇAMENTOS POR ANO" icon={<CalendarIcon />} />
       <LaunchesPerYearChart
         data={{
           labels: chartLabels, // Anos
