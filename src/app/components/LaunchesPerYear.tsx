@@ -7,6 +7,7 @@ import { LaunchContext } from "../context/LaunchContext";
 export default function LaunchesPerRocket() {
   const {
     launchStats: { data },
+    rocketColors,
   } = useContext(LaunchContext);
 
   const launchesByYear = data?.launchesByYear || {};
@@ -31,17 +32,10 @@ export default function LaunchesPerRocket() {
       data.push(launches[rocket] || 0);
     }
 
-    // Defina a cor do gráfico com base no índice do foguete (pode personalizar as cores conforme desejado)
-    const backgroundColors = [
-      "rgb(255, 99, 132)",
-      "rgb(54, 162, 235)",
-      // Adicione mais cores conforme necessário
-    ];
-
     chartData.push({
       label: rocket,
       data: data,
-      backgroundColor: backgroundColors[index % backgroundColors.length],
+      backgroundColor: rocketColors[rocket],
     });
   });
 

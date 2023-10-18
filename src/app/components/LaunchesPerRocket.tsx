@@ -10,6 +10,7 @@ import { LaunchContext } from "../context/LaunchContext";
 export default function LaunchesPerRocket() {
   const {
     launchStats: { data },
+    rocketColors,
   } = useContext(LaunchContext);
 
   const launchesByRocket = data?.launchesByRocket || {};
@@ -18,13 +19,22 @@ export default function LaunchesPerRocket() {
   const chartLabels = launchesByRocket ? Object.keys(launchesByRocket) : [];
   const chartData = launchesByRocket ? Object.values(launchesByRocket) : [];
 
+  let chartColors = chartLabels.map((rocketName) => {
+    return rocketColors[rocketName];
+  });
+
   return (
     <div className="bg-white bg-opacity-5 text-white w-full flex flex-col py-6 px-4 rounded-md">
       <SectionTitle text="LANÇAMENTOS POR FOGUETE" icon={<RocketIcon />} />
       <LaunchesPerRocketChart
         data={{
           labels: chartLabels,
-          data: chartData,
+          datasets: [
+            {
+              data: chartData,
+              backgroundColor: chartColors,
+            },
+          ],
         }}
       />
       <div className="flex gap-4">

@@ -1,17 +1,20 @@
 import React from "react";
 import CustomLink from "@/@core/components/CustomLink";
+import { formatBrazilianDateTime } from "../helpers/formatBrazilianDateTime";
 
 interface LaunchesHistoryItemProps {
+  missionPatch: string;
   name: string;
   flightNumber: number;
   success: boolean;
   rocketName: string;
   reused: boolean;
-  launchDate: Date;
+  launchDate: string;
   youtubeId: string;
 }
 
 export default function LaunchesHistoryItem({
+  missionPatch,
   name,
   flightNumber,
   success,
@@ -22,15 +25,13 @@ export default function LaunchesHistoryItem({
 }: LaunchesHistoryItemProps) {
   return (
     <div className="bg-stone-700 bg-opacity-60 rounded-md p-4 flex gap-6">
-      <img
-        src="https://images2.imgbox.com/94/f2/NN6Ph45r_o.png"
-        alt="Falcon 1"
-        className="w-16"
-      />
+      <img src={missionPatch} alt="Falcon 1" className="w-16" />
       <div className="w-full">
         <div className="flex justify-between">
           <span className="text-lg">{name}</span>
-          <i className="text-stone-400">#{flightNumber}</i>
+          <div className="text-stone-400">
+            <b>N° Vôo:</b> #{flightNumber}
+          </div>
         </div>
         <div className="mt-2 flex gap-8 items-center">
           {success ? (
@@ -46,10 +47,11 @@ export default function LaunchesHistoryItem({
             <b>Foguete:</b> {reused && <>Used</>} {rocketName}
           </span>
           <span className="text-stone-400">
-            <b>Data:</b> {launchDate?.toUTCString()}
+            <b>Data:</b> {formatBrazilianDateTime(new Date(launchDate))}
           </span>
           <CustomLink
             href={`https://youtube.com/watch?v=${youtubeId}`}
+            target="_blank"
             title="Ver vídeo"
           >
             Ver vídeo

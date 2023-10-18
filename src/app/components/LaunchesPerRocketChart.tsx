@@ -31,27 +31,12 @@ ChartJS.register(
 import { Pie } from "react-chartjs-2";
 
 type LaunchesPerRocketChart = {
-  data: { labels: string[]; data: number[] };
+  data: { labels: string[]; datasets: any[] };
 };
 
 const LaunchesPerRocketChart: React.FC<LaunchesPerRocketChart> = ({ data }) => {
-  const chartData = {
-    labels: data.labels,
-    datasets: [
-      {
-        data: data.data,
-        backgroundColor: [
-          "#4C220A",
-          "#894D23",
-          "#BE682C",
-          "#F2F2F2",
-          "#828282",
-        ],
-      },
-    ],
-  };
 
-  const chartOptions = {
+  const chartOptions: any = {
     locale: "pt-br",
     borderColor: "rgba(255,255,255,0)",
     plugins: {
@@ -64,7 +49,7 @@ const LaunchesPerRocketChart: React.FC<LaunchesPerRocketChart> = ({ data }) => {
 
   return (
     <div className="h-96">
-      <Pie data={chartData} options={chartOptions} />
+      <Pie data={data} options={chartOptions} />
     </div>
   );
 };

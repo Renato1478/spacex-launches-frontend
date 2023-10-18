@@ -41,7 +41,7 @@ function SearchInput({ onSearch, delay = 500 }: SearchInputProps) {
       </div>
       <input
         type="search"
-        className="block w-full pl-10 p-2.5 rounded-md bg-stone-700 border-2 border-stone-400 placeholder-stone-400 text-white focus:ring-orange-500 focus:border-orange-500"
+        className="block w-full pl-10 p-2.5 rounded-md bg-stone-700 placeholder-stone-400 text-white focus:ring-orange-500 focus:border-orange-500"
         placeholder="Procure por foguete, missão e/ou resultado..."
         value={searchTerm}
         onChange={handleInputChange}

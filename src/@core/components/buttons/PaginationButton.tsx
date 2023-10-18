@@ -1,5 +1,6 @@
 "use client";
 
+import classNames from "classnames";
 import React, { ButtonHTMLAttributes, DetailedHTMLProps } from "react";
 
 interface Props
@@ -10,13 +11,18 @@ interface Props
   isActive: boolean;
 }
 
-export default function PaginationButton({ isActive, ...props }: Props) {
+export default function PaginationButton({
+  isActive = false,
+  ...props
+}: Props) {
   return (
     <button
       {...props}
-      className={`px-3 py-1 rounded-sm dark:text-slate-400 bg-slate-50 dark:bg-slate-50 dark:bg-opacity-5 hover:text-purple-400 dark:hover:text-purple-600 transition ease-in-out duration-300 ${
-        isActive ? "text-purple-400 dark:text-purple-600" : null
-      } `}
+      className={classNames(
+        "px-3 py-1 rounded-sm text-stone-400 bg-stone-50 bg-opacity-5 hover:text-orange-600 transition ease-in-out duration-300",
+        isActive ? "text-orange-600" : null,
+        props.className
+      )}
     >
       {props.children}
     </button>
