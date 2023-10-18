@@ -62,7 +62,8 @@ export const Pagination = ({
   const renderPaginationButtons = () => {
     const itemsLeft: any[] = [];
     const itemsRight: any[] = [];
-    const ellipsis = <span key="ellipsis">...</span>;
+    const ellipsisLeft = <span key="ellipsis-left">...</span>;
+    const ellipsisRight = <span key="ellipsis-right">...</span>;
 
     if (currentPage > 1) {
       // Mostrar os dois botões à esquerda, se possível.
@@ -74,7 +75,7 @@ export const Pagination = ({
         itemsLeft.unshift(renderButton(i));
 
         if (i > nearButtonsToShow + 1) {
-          itemsLeft.unshift(ellipsis);
+          itemsLeft.unshift(ellipsisLeft);
         }
       }
     }
@@ -89,7 +90,7 @@ export const Pagination = ({
         itemsRight.push(renderButton(i));
 
         if (i < totalPages + nearButtonsToShow) {
-          itemsRight.push(ellipsis);
+          itemsRight.push(ellipsisRight);
         }
       }
     }
@@ -139,9 +140,9 @@ export const Pagination = ({
         <div>
           <p className="text-sm text-stone-400 flex gap-1">
             Mostrando de
-            <span className="font-medium">{limit * currentPage}</span>
+            <span className="font-medium">{limit * (currentPage - 1)}</span>
             até
-            <span className="font-medium">{limit * (currentPage + 1)}</span>
+            <span className="font-medium">{limit * currentPage}</span>
             de
             <span className="font-medium">{totalDocs}</span>
             lançamentos

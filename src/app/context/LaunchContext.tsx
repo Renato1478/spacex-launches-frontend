@@ -14,11 +14,13 @@ interface LaunchContextProps {
   launches: any;
   launchStats: any;
   rocketColors: RocketColorProps;
-  paginationOptions: {
+  listOptions: {
     limit: number;
     setLimit: (limit: number) => void;
     page: number;
     setPage: (page: number) => void;
+    search: string;
+    setSearch: (search: string) => void;
   };
 }
 
@@ -49,20 +51,23 @@ export const LaunchContext = createContext<LaunchContextProps>({
     error: null,
   },
   rocketColors: {},
-  paginationOptions: {
+  listOptions: {
     limit: 10,
     setLimit: (limit) => {},
     page: 1,
     setPage: (page) => {},
+    search: "",
+    setSearch: (search) => {},
   },
 });
 
 export const LaunchContextProvider = ({ children }: Props) => {
   const [limit, setLimit] = useState(5);
   const [page, setPage] = useState(1);
+  const [search, setSearch] = useState('');
 
   const launchesQuery = useQuery(
-    ["launches", { page, limit }],
+    ["launches", { page, limit, search }],
     fetchLaunchesData
   );
   const launchStatsQuery = useQuery("launchesStats", fetchStatsData);
@@ -90,11 +95,13 @@ export const LaunchContextProvider = ({ children }: Props) => {
         launches: launchesQuery,
         launchStats: launchStatsQuery,
         rocketColors,
-        paginationOptions: {
+        listOptions: {
           limit,
           setLimit,
           page,
           setPage,
+          search,
+          setSearch,
         },
       }}
     >

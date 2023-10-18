@@ -25,7 +25,11 @@ export default function LaunchesHistoryItem({
 }: LaunchesHistoryItemProps) {
   return (
     <div className="bg-stone-700 bg-opacity-60 rounded-md p-4 flex gap-6">
-      <img src={missionPatch} alt="Falcon 1" className="w-16" />
+      <img
+        src={missionPatch}
+        alt="Falcon 1"
+        className="w-16 h-16 max-md:h-12 max-md:w-12"
+      />
       <div className="w-full">
         <div className="flex justify-between">
           <span className="text-lg">{name}</span>
@@ -46,6 +50,20 @@ export default function LaunchesHistoryItem({
           <span className="text-stone-400">
             <b>Foguete:</b> {reused && <>Used</>} {rocketName}
           </span>
+          <div className="flex gap-8 items-center max-md:mt-2 max-md:hidden">
+            <span className="text-stone-400">
+              <b>Data:</b> {formatBrazilianDateTime(new Date(launchDate))}
+            </span>
+            <CustomLink
+              href={`https://youtube.com/watch?v=${youtubeId}`}
+              target="_blank"
+              title="Ver vídeo"
+            >
+              Ver vídeo
+            </CustomLink>
+          </div>
+        </div>
+        <div className="gap-8 items-center mt-2 hidden max-md:flex">
           <span className="text-stone-400">
             <b>Data:</b> {formatBrazilianDateTime(new Date(launchDate))}
           </span>
